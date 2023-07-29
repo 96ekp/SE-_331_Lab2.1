@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import PassengerDetailsView from .. /views/PassengerDetailsView.vue'
+import PassengerDetailsView from ../views/PassengerDetailsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import NetworkErrorView from '../views/NetworkErrorView.vue'
 
