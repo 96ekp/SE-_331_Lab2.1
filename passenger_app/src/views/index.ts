@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import PassengerDetailsView from '@/views/PassengerDetailsView.vue'
+import PassengerDetailsView from .. /views/PassengerDetailsView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
+import NetworkErrorView from '../views/NetworkErrorView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,6 +31,16 @@ const router = createRouter({
           name: 'airline-details',
           component: AirlineDetailsView,
           props: true
+        },
+        {
+          path: '/network-error',
+          name: 'network-error',
+          component: NetworkErrorView
+        },
+        {
+          path: '/:catchAll(.*)',
+          name: 'not-found',
+          component: NotFoundView
         }
       ]
     }
