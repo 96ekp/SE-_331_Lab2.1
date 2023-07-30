@@ -10,9 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onErrorCaptured } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import { defineProps } from 'vue'
 
+const props = defineProps(['id'])
 const passenger = ref(null)
 
 onMounted(async () => {
@@ -22,12 +24,11 @@ onMounted(async () => {
     )
     passenger.value = data
   } catch (error) {
-    // Handle resource not found (404) error
-    if (error.response && error.response.status === 404) {
-      router.push({ name: 'not-found' })
-    } else {
-      router.push({ name: 'network-error' })
-    }
+    router.push({ name: 'not-found' })
   }
 })
 </script>
+
+<style scoped>
+/* Add your styles here */
+</style>

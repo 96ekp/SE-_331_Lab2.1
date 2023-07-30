@@ -9,15 +9,23 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import { defineProps } from 'vue'
 
 const props = defineProps(['id'])
-
 const airline = ref(null)
 
 onMounted(async () => {
-  const { data } = await axios.get(
-    `https://my-json-server.typicode.com/se331-2022/passengerdb/airline/${props.id}`
-  )
-  airline.value = data
+  try {
+    const { data } = await axios.get(
+      `https://my-json-server.typicode.com/se331-2022/passengerdb/airline/${props.id}`
+    )
+    airline.value = data
+  } catch (error) {
+    router.push({ name: 'not-found' })
+  }
 })
 </script>
+
+<style scoped>
+/* Add your styles here */
+</style>
