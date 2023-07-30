@@ -21,6 +21,7 @@ onMounted(async () => {
     )
     airline.value = data
   } catch (error) {
+    console.error(error)
     router.push({ name: 'not-found' })
   }
 })
