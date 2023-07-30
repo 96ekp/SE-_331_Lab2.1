@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Passenger Details</h1>
-    <p>Name: {{ passenger.name }}</p>
+    <p>Name: {{ passenger.first_name }} {{ passenger.last_name }}</p>
     <p>Age: {{ passenger.age }}</p>
     <p>Gender: {{ passenger.gender }}</p>
 
@@ -12,10 +12,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { defineProps } from 'vue'
+import { EventItem } from '@/types'
 
 const props = defineProps(['id'])
-const passenger = ref(null)
+
+const passenger = ref<EventItem | null>(null)
 
 onMounted(async () => {
   try {
