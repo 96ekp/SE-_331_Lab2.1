@@ -3,6 +3,7 @@
     <h2>Airline Details</h2>
     <p>Airline Name: {{ airline.name }}</p>
     <p>Country: {{ airline.country }}</p>
+    <p>Founded: {{ airline.founded }}</p>
   </div>
 </template>
 
@@ -10,13 +11,14 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { EventItem } from '@/types'
-const props = defineProps(['id'])
-const airline = ref<EventItem | null>(null)
+
+const props = defineProps(['airlineId'])
+const airline = ref<Airline | null>(null)
 
 onMounted(async () => {
   try {
     const { data } = await axios.get(
-      `https://my-json-server.typicode.com/se331-2022/passengerdb/airline/${props.id}`
+      `https://my-json-server.typicode.com/se331-2022/passengerdb/airline/${props.airlineId}`
     )
     airline.value = data
   } catch (error) {
