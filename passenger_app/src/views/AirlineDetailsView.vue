@@ -9,10 +9,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { defineProps } from 'vue'
-
+import { EventItem } from '@/types'
 const props = defineProps(['id'])
-const airline = ref(null)
+const airline = ref<EventItem | null>(null)
 
 onMounted(async () => {
   try {
