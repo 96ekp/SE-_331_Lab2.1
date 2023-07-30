@@ -5,7 +5,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import { EventItem } from '@/types'
+import { EventItem } from './types'
 
 const app = createApp(App)
 const passengers = ref<EventItem[]>([])
