@@ -16,12 +16,9 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 const passengers = ref([])
 
-onMounted(async () => {
-  const { data } = await axios.get(
-    'https://my-json-server.typicode.com/se331-2022/passengerdb/passenger?_page=1&_limit=5'
-  )
-  passengers.value = data
-})
+const { data: passengers } = await axios.get(
+  'https://my-json-server.typicode.com/se331-2022/passengerdb/passenger?_page=1&_limit=5'
+)
 </script>
 <style scoped>
 .passenger-list {
