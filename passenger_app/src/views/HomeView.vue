@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Passengers</h1>
-    <ul>
+    <ul class="passenger-list">
       <li v-for="passenger in passengers" :key="passenger.id">
         <router-link :to="{ name: 'passenger-details', params: { id: passenger.id } }">
           {{ passenger.name }}
@@ -23,3 +23,24 @@ onMounted(async () => {
   passengers.value = data
 })
 </script>
+<style scoped>
+.passenger-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.passenger-list li {
+  margin-bottom: 10px;
+}
+
+.passenger-list li a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.passenger-list li a:hover {
+  text-decoration: underline;
+}
+</style>
