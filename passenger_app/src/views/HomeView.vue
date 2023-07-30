@@ -4,7 +4,7 @@
     <ul class="passenger-list">
       <li v-for="passenger in passengers" :key="passenger.id">
         <router-link :to="{ name: 'passenger-details', params: { id: passenger.id } }">
-          {{ passenger.name }}
+          {{ passenger.first_name }} {{ passenger.last_name }}
         </router-link>
       </li>
     </ul>
@@ -14,8 +14,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-
-const passengers = ref([])
+import { EventItem } from '@/types'
+const passengers = ref<EventItem[]>([])
 
 onMounted(async () => {
   try {
