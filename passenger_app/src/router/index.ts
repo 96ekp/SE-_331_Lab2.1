@@ -1,45 +1,53 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PassengerDetailsView from '../views/PassengerDetailsView.vue'
 import AirlineDetailsView from '../views/AirlineDetailsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import NetworkErrorView from '../views/NetworkErrorView.vue'
-
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/passenger/:id',
-    name: 'passenger-details',
-    component: PassengerDetailsView,
-    props: true,
-    children: [
-      {
-        path: 'airline',
-        name: 'airline-details',
-        component: AirlineDetailsView,
-        props: true
-      }
-    ]
-  },
-  {
-    path: '/network-error',
-    name: 'network-error',
-    component: NetworkErrorView
-  },
-  {
-    path: '/:catchAll(.*)',
-    name: 'not-found',
-    component: NotFoundView
-  }
-]
+import { EventItem } from '@/types'
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView,
+      props: { passengers: [] as EventItem[] } // Update this line to use EventItem interface
+    },
+    {
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/passenger/:id',
+      name: 'passenger-details',
+      component: PassengerDetailsView,
+      props: true,
+      children: [
+        {
+          path: 'airline',
+          name: 'airline-details',
+          component: AirlineDetailsView,
+          props: true
+        },
+        {
+          path: '/network-error',
+          name: 'network-error',
+          component: NetworkErrorView
+        },
+        {
+          path: '/:catchAll(.*)',
+          name: 'not-found',
+          component: NotFoundView
+        }
+      ]
+    }
+  ]
 })
 
 export default router
