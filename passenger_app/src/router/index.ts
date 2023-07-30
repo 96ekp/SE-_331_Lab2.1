@@ -32,18 +32,18 @@ const router = createRouter({
           name: 'airline-details',
           component: AirlineDetailsView,
           props: true
-        },
-        {
-          path: '/network-error',
-          name: 'network-error',
-          component: NetworkErrorView
-        },
-        {
-          path: '/:catchAll(.*)',
-          name: 'not-found',
-          component: NotFoundView
         }
       ]
+    },
+    {
+      path: '/network-error',
+      name: 'network-error',
+      component: NetworkErrorView
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'not-found',
+      component: NotFoundView
     }
   ]
 })
