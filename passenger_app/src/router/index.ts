@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import PassengerDetailsView from '../views/PassengerDetailsView.vue'
 import AirlineDetailsView from '../views/AirlineDetailsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
-import ResourceNotFoundView from '../views/ResourceNotFoundView.vue'
+// import ResourceNotFoundView from '../views/ResourceNotFoundView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,12 +22,12 @@ const routes: Array<RouteRecordRaw> = [
         name: 'airline-details',
         component: AirlineDetailsView,
         props: true
-      },
-      {
-        path: 'resource-not-found',
-        name: 'resource-not-found',
-        component: ResourceNotFoundView
       }
+      // {
+      //   path: 'resource-not-found',
+      //   name: 'resource-not-found',
+      //   component: ResourceNotFoundView
+      // }
     ]
   },
   {
