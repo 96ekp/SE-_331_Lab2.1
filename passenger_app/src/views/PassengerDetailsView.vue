@@ -24,6 +24,7 @@ onMounted(async () => {
     )
     passenger.value = data
   } catch (error) {
+    console.error(error)
     router.push({ name: 'not-found' })
   }
 })
