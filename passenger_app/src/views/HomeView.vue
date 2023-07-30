@@ -18,10 +18,14 @@ import axios from 'axios'
 const passengers = ref([])
 
 onMounted(async () => {
-  const { data } = await axios.get(
-    'https://my-json-server.typicode.com/se331-2022/passengerdb/passenger?_page=1&_limit=5'
-  )
-  passengers.value = data
+  try {
+    const { data } = await axios.get(
+      'https://my-json-server.typicode.com/se331-2022/passengerdb/passenger?_page=1&_limit=5'
+    )
+    passengers.value = data
+  } catch (error) {
+    console.error(error)
+  }
 })
 </script>
 
