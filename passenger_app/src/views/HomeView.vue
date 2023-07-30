@@ -12,9 +12,14 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
+const passengers = ref([])
 
-const { data: passengers } = await axios.get(
-  'https://my-json-server.typicode.com/se331-2022/passengerdb/passenger?_page=1&_limit=5'
-)
+onMounted(async () => {
+  const { data } = await axios.get(
+    'https://my-json-server.typicode.com/se331-2022/passengerdb/passenger?_page=1&_limit=5'
+  )
+  passengers.value = data
+})
 </script>
