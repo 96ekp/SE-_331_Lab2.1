@@ -1,12 +1,11 @@
 <template>
-  <header>
-    <nav><RouterLink to="/">Home</RouterLink> | <RouterLink to="/about">About</RouterLink></nav>
-  </header>
+  <div id="app">
+    <header>
+      <nav><RouterLink to="/">Home</RouterLink> | <RouterLink to="/about">About</RouterLink></nav>
+    </header>
 
-  <main>
-    <!-- The main content of your application will be rendered here -->
-    <router-view :passenger="passenger" />
-  </main>
+    <RouterView />
+  </div>
 </template>
 <style>
 #app {
