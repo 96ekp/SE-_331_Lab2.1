@@ -10,17 +10,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onErrorCaptured } from 'vue'
 import axios from 'axios'
-
-const props = defineProps(['id'])
 
 const passenger = ref(null)
 
 onMounted(async () => {
-  const { data } = await axios.get(
-    `https://my-json-server.typicode.com/se331-2022/passengerdb/passenger/${props.id}`
-  )
-  passenger.value = data
+  try {
+    const { data } = await axios.get(
+      `https://my-json-server.typicode.com/se331-2022/passengerdb/passenger/${props.id}`
+    )
+    passenger.value = data
+  } catch (error) {
+    // Handle resource not found (404) error
+    if (error.response && error.response.status === 404) {
+      router.push({ name: 'not-found' })
+    } else {
+      router.push({ name: 'network-error' })
+    }
+  }
 })
 </script>
